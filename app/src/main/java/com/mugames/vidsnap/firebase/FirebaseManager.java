@@ -27,18 +27,17 @@ import androidx.core.content.pm.PackageInfoCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
-import com.mugames.vidsnap.firebase.FirebaseCallBacks.UpdateCallbacks;
 import com.mugames.vidsnap.R;
+import com.mugames.vidsnap.firebase.FirebaseCallBacks.UpdateCallbacks;
 import com.mugames.vidsnap.storage.AppPref;
-import com.mugames.vidsnap.utility.UtilityInterface;
 import com.mugames.vidsnap.ui.activities.ReportActivity;
+import com.mugames.vidsnap.utility.UtilityInterface;
 
 public class FirebaseManager {
     private static volatile FirebaseManager instance;
@@ -75,9 +74,9 @@ public class FirebaseManager {
 
     public void getShareLink(FirebaseCallBacks.ShareLinkCallback shareLinkCallback) {
         remoteConfig.fetchAndActivate()
-                .addOnCompleteListener(new OnCompleteListener<Boolean>() {
+                .addOnCompleteListener(new OnCompleteListener< Boolean >() {
                     @Override
-                    public void onComplete(@NonNull Task<Boolean> task) {
+                    public void onComplete(@NonNull Task< Boolean > task) {
                         if (task.isSuccessful()) {
                             shareLinkCallback.onShareLinkGot(remoteConfig.getString("share_link"));
                         }
@@ -87,9 +86,9 @@ public class FirebaseManager {
 
     public void getShareText(FirebaseCallBacks.ShareTextCallback textCallback) {
         remoteConfig.fetchAndActivate()
-                .addOnCompleteListener(new OnCompleteListener<Boolean>() {
+                .addOnCompleteListener(new OnCompleteListener< Boolean >() {
                     @Override
-                    public void onComplete(@NonNull Task<Boolean> task) {
+                    public void onComplete(@NonNull Task< Boolean > task) {
                         if (task.isSuccessful()) {
                             textCallback.onShareTextGot(remoteConfig.getString("share_message"));
                         }
@@ -99,9 +98,9 @@ public class FirebaseManager {
 
     public void getInstaCookie(UtilityInterface.CookiesInterface cookiesInterface) {
         remoteConfig.fetchAndActivate()
-                .addOnCompleteListener(new OnCompleteListener<Boolean>() {
+                .addOnCompleteListener(new OnCompleteListener< Boolean >() {
                     @Override
-                    public void onComplete(@NonNull Task<Boolean> task) {
+                    public void onComplete(@NonNull Task< Boolean > task) {
                         if (task.isSuccessful()) {
                             cookiesInterface.onReceivedCookies(remoteConfig.getString("insta_cookies"));
                         }
@@ -118,9 +117,9 @@ public class FirebaseManager {
 
     public void checkUpdate(UpdateCallbacks updateCallbacks) {
         remoteConfig.fetchAndActivate()
-                .addOnCompleteListener(new OnCompleteListener<Boolean>() {
+                .addOnCompleteListener(new OnCompleteListener< Boolean >() {
                     @Override
-                    public void onComplete(@NonNull Task<Boolean> task) {
+                    public void onComplete(@NonNull Task< Boolean > task) {
                         if (task.isSuccessful()) {
                             boolean isUpdateAvailable = false;
                             boolean isForced = false;
@@ -146,12 +145,15 @@ public class FirebaseManager {
     }
 
     int versionToInt(String version) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < version.length(); i++) {
-            char c = version.charAt(i);
-            if (Character.isDigit(c)) builder.append(c);
-        }
-        return Integer.parseInt(builder.toString());
+        if (!version.isEmpty()) {
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < version.length(); i++) {
+                char c = version.charAt(i);
+                if (Character.isDigit(c)) builder.append(c);
+            }
+            return Integer.parseInt(builder.toString());
+        }else
+            return 1;
     }
 
     public void initReport() {

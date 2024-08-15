@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "2407027359",
+    "project_id": "bootstrap33-59bc4",
+    "storage_bucket": "bootstrap33-59bc4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2407027359:android:98b49e2ccf2d01675dc8aa",
+        "android_client_info": {
+          "package_name": "com.mugames.vidsnap.hk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXW3HT6MLVg6uSBDFMuT2RYQ6fk22byHU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2407027359:android:de478536cbf3be845dc8aa",
+        "android_client_info": {
+          "package_name": "com.ozi.bootstrap2024"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXW3HT6MLVg6uSBDFMuT2RYQ6fk22byHU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
